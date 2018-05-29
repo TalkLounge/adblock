@@ -61,3 +61,7 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
   end
 end)
 
+minetest.register_on_leaveplayer(function(player)
+		adusers[player:get_player_name()] = nil
+end)
+
