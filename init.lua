@@ -24,7 +24,7 @@ minetest.register_globalstep(function(dtime)
 				minetest.show_formspec(name, "adblock:main",
 					form ..
 					"button[1.35,3.5;1.2,0.1;adblock_main;Accept]")
-			elseif lastpos[name] and (player:get_player_control().up or player:get_player_control().down or player:get_player_control().right or player:get_player_control().left) and vector.equals(lastpos[name], pos) then
+			elseif lastpos[name] and (player:get_player_control().up or player:get_player_control().down or player:get_player_control().right or player:get_player_control().left) and vector.equals(lastpos[name], pos) and ((default and default.player_attached and not default.player_attached[name]) or (player_api and player_api.player_attached and not player_api.player_attached[name])) then
 				adusers[name] = adusers[name] and adusers[name] + 1 or 1
 				if adusers[name] >= 10 then
 					minetest.show_formspec(name, "adblock:main",
