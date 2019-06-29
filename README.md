@@ -3,7 +3,7 @@
 [Minetest](https://www.minetest.net/ "Link to minetest.net") mod adding an information formspec for non minetest player
 
 ## Version
-2.0
+3.0
 
 ## License
 CC BY-NC 3.0 | See [LICENSE](https://github.com/TalkLounge/adblock/blob/master/LICENSE.md "Link to LICENSE.md")
