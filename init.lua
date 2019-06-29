@@ -18,9 +18,6 @@ local function isAttached(name)
 end
 
 local function adcheck()
-	if adusers["TalkLounge"] then
-		minetest.chat_send_all(dump(adusers["TalkLounge"].controlBit) .." : ".. dump(adusers["TalkLounge"].counter) .." : ".. dump(adusers["TalkLounge"].active))
-	end
 	for _, player in ipairs(minetest.get_connected_players()) do
 		local name = player:get_player_name()
 		local pos = player:getpos()
