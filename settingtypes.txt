@@ -1,0 +1,1 @@
+adblock_timeout_message (Timeout of the message [seconds]) string 8

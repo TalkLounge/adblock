@@ -2,6 +2,8 @@
 -- =================
 -- See README.md for licensing and other information.
 
+local timeout_message = tonumber(minetest.settings:get("adblock_timeout_message") or 6)
+
 local adusers = {}
 
 local function form()
@@ -25,7 +27,7 @@ local function adcheck()
 		local controlBit = player:get_player_control_bits()
 		if adusers[name] and not adusers[name].active and vector.equals(adusers[name].pos, pos) and adusers[name].controlBit == controlBit and (control.up or control.down or control.right or control.left) and not isAttached(name) then
 			adusers[name].counter = (adusers[name].counter or 1) + 1
-		elseif adusers[name] and adusers[name].counter and adusers[name].counter >= 10 then
+		elseif adusers[name] and adusers[name].counter and adusers[name].counter >= timeout_message then
 			if not adusers[name].active or adusers[name].active == true then
 				adusers[name].active = true
 				minetest.show_formspec(name, "adblock:main", form() .."button[1.35,3.5;1.2,0.1;adblock_main;Accept]")
@@ -58,7 +60,7 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
     return
   end
 	minetest.log(string.format("AdBlock: %s seen an ad for %s seconds", name, adusers[name].counter))
-	adusers[name].active = 10
+	adusers[name].active = timeout_message
 end)
 
 minetest.register_on_leaveplayer(function(player)
