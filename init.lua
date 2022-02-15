@@ -2,7 +2,7 @@
 -- =================
 -- See README.md for licensing and other information.
 
-local timeout_message = tonumber(minetest.settings:get("adblock_timeout_message") or 6)
+local timeout_message = minetest.settings and tonumber(minetest.settings:get("adblock_timeout_message")) or 10
 
 local adusers = {}
 
